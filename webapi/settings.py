@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'microservico',
+    'webapi',
 ]
 
 MIDDLEWARE = [
@@ -75,9 +77,13 @@ WSGI_APPLICATION = 'webapi.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+                'ENGINE': 'django.db.backends.postgresql_psycopg2',
+                'NAME': os.environ.get('POSTGRES_DATABASE', 'db'),
+                'USER': os.environ.get('POSTGRES_USER', 'postgres'),
+                'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'postgres'),
+                'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
+                'PORT': os.environ.get('POSTGRES_PORT', '5432'),
+            }
 }
 
 
@@ -103,9 +109,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Manaus'
 
 USE_I18N = True
 
