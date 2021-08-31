@@ -37,8 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # built-in do django
+    'rest_framework',
+    'rest_framework_swagger',
+    # apps personalizadas
     'microservico',
-    'webapi',
 ]
 
 MIDDLEWARE = [
@@ -78,7 +81,7 @@ WSGI_APPLICATION = 'webapi.wsgi.application'
 DATABASES = {
     'default': {
                 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-                'NAME': os.environ.get('POSTGRES_DATABASE', 'db'),
+                'NAME': os.environ.get('POSTGRES_DATABASE', 'postgres'),
                 'USER': os.environ.get('POSTGRES_USER', 'postgres'),
                 'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'postgres'),
                 'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
@@ -129,3 +132,7 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# user model personalizado
+AUTH_USER_MODEL = 'microservico.User'
+REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS':'rest_framework.schemas.coreapi.AutoSchema' }
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
