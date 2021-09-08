@@ -11,4 +11,3 @@ class UserSerializerTestCase(TestCase):
     def test_success_serializer(self):
         serializer = UserSerializer(data=self.user)
         self.assertTrue(serializer.is_valid())
-
