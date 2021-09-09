@@ -11,7 +11,7 @@ def me(request, **kwargs):
     try:
         user = request.user
         response = {
-            # "name": data_user.name,
+            "name": user.name,
             "message": Message.objects.values("message").filter(user_id=user.id),
         }
         return Response(data=response)
