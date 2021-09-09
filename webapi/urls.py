@@ -25,6 +25,6 @@ schema_view = get_swagger_view(title="swagger-microserviço")
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include(micro_router.urls)),
-    path("me/", views.mine),
+    path("me/", views.me),
     path("doc/", schema_view),
 ]
