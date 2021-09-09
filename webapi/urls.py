@@ -16,14 +16,17 @@ Including another URLconf
 from django.conf.urls import include
 from django.contrib import admin
 from django.urls import path
+from microservico import views
 from microservico.api.routers import router as micro_router
 from rest_framework_swagger.views import get_swagger_view
 
-schema_view = get_swagger_view(title='swagger-microserviço')
+schema_view = get_swagger_view(title="swagger-microserviço")
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include(micro_router.urls)),
-    path('me/', include('microservico.urls')),
-    path('doc/', schema_view),
+    path("admin/", admin.site.urls),
+    path("", include(micro_router.urls)),
+    path("signup/", views.signup),
+    path("signin/", views.signin, name="login"),
+    path("me/", views.mine),
+    path("doc/", schema_view),
 ]

@@ -21,6 +21,9 @@ class Message(models.Model):
     message = models.CharField(max_length=2000)
     created = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.message
+
 
 class Actions(models.Model):
     like = models.BooleanField(default=False, null=True)
